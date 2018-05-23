@@ -123,15 +123,13 @@ class Main extends Command
     private function _initConfig()
     {
         $fs = new Filesystem(new Local(__DIR__ . '/../config/'));
-        $fs->put('backend.cfg', '');
-        $fs->put('frontend.cfg', '');
+        $fs->put('auto.cfg', '');
     }
 
     private function _writeConfig()
     {
         $fs = new Filesystem(new Local(__DIR__ . '/../config/'));
-        $fs->put('backend.cfg', $this->_redis->get("swg_tcp_backend"));
-        $fs->put('frontend.cfg', $this->_redis->get("swg_tcp_frontend"));
+        $fs->put('auto.cfg', $this->_redis->get("swg_tcp_config"));
         $this->log("配置文件更新完成 ... ");
     }
 }
